@@ -1,0 +1,34 @@
+//Main Intention:
+function findMostFrequentItem(inventory) {
+  // Write your code here
+  const keys = Object.keys(inventory);
+  let highestQuantity = inventory[keys[0]];
+  let highestItem = keys[0];
+
+  for (let i = 1; i < keys.length; i++) {
+    const item = keys[i];
+    const quantity = inventory[item];
+    
+    if (quantity > highestQuantity) {
+      highestQuantity = quantity;
+      highestItem = item;
+    }
+  }
+  
+  return highestItem;
+}
+
+//Alternative approach:
+function findMostFrequentItem(inventory) {
+  let highestItem = null;
+  let highestQuantity = -Infinity;
+
+  for (const [item, quantity] of Object.entries(inventory)) {
+    if (quantity > highestQuantity) {
+      highestQuantity = quantity;
+      highestItem = item;
+    }
+  }
+
+  return highestItem;
+}
